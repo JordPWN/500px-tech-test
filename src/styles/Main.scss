@@ -1,0 +1,34 @@
+.main {
+  background-color: teal;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100vw;
+  height: 100vh;
+  .album {
+    height: calc(100vh - 5em);
+    width: 100vw;
+    background-color: firebrick;
+    overflow-y: scroll;
+    .album-container {
+      margin: 5em;
+      background-color: indigo;
+      height: 100%;
+      width: calc(100% - 10em);
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100vw;
+  height: 5em;
+  background-color: tomato;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5em;
+  .nav {
+    padding: 1em;
+    background-color: goldenrod;
+  }
+}
