@@ -5,13 +5,11 @@
   width: 100vw;
   height: 100vh;
   .album {
-    min-height: calc(100vh - 5em);
+    height: calc(100vh - 5em);
     width: 100vw;
     background-color: firebrick;
     overflow-y: scroll;
     .album-container {
-      margin: 5em;
-      background-color: indigo;
       height: 100%;
       width: calc(100% - 10em);
     }
@@ -30,5 +28,12 @@
   .nav {
     padding: 1em;
     background-color: goldenrod;
+  }
+}
+
+.photo {
+  img {
+    width: 100%;
+    height: auto;
   }
 }
