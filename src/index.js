@@ -4,6 +4,8 @@ import './index.css';
 import Main from './views/Main';
 import * as serviceWorker from './serviceWorker';
 
+require('dotenv').config()
+
 ReactDOM.render(
   <React.StrictMode>
     <Main />

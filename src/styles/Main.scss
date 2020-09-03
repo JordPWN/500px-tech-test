@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   .album {
-    height: calc(100vh - 5em);
+    min-height: calc(100vh - 5em);
     width: 100vw;
     background-color: firebrick;
     overflow-y: scroll;
