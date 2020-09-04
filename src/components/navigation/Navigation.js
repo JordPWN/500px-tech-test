@@ -12,7 +12,7 @@ export default class Navigation extends React.Component {
           </div>
         </div>
         <div className="nav nav-right">
-          <div className="nav-filter-nsfw">
+          <div className="nav-filter nav-filter-nsfw">
             NSFW
           </div>
         </div>

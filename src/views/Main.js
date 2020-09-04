@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef  } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 import Album from '../components/album/Album.js'
@@ -6,18 +6,38 @@ import Navigation from '../components/navigation/Navigation.js'
 
 import '../styles/Main.scss';
 
-
 export default class Main extends React.Component {
-  state = {
-    results: {},
-    page: 1,
-    photos: [],
-    loading: false
+  constructor(props) {
+    super(props)
+    this.album = React.createRef()
+    this.state = {
+      results: {},
+      page: 1,
+      photos: [],
+      loading: false,
+      isScrolling: false,
+      showNsfw: true,
+      feature: 'fresh_today',
+      threshold: 100,
+      throttle: 64,
+    }
   }
 
-  getPhotos(page) {
+  nudeFilter() {
+    return this.state.showNsfw ? '&exclude=nude' : ''
+  }
+
+  featureFilter() {
+    return this.state.feature ? `&feature=${this.state.feature}` : ''
+  }
+
+  getPhotos = (page) => {
     this.setState({ loading: true })
-    axios.get(`https://api.500px.com/v1/photos?consumer_key=${process.env.REACT_APP_PX_API_KEY}&feature=popular&page=${page}`)
+    axios.get(`https://api.500px.com/v1/photos?
+    consumer_key=${process.env.REACT_APP_PX_API_KEY}
+    &page=${page}
+    ${ this.nudeFilter() }
+    ${ this.featureFilter() }`)
       .then(
         res => {
           const results = res.data
@@ -34,24 +54,22 @@ export default class Main extends React.Component {
       )
   }
 
-  loadMore() {
-    this.getPhotos(this.state.page + 1)
-  }
-
   componentDidMount() {
     this.getPhotos(this.state.page)
   }
 
   render() {
-    const isLoading = { display: this.state.loading ? "flex" : "none" }
     return (
-      <div className="main">
+      <div className="main" id='main'>
         <Navigation />
-        <Album photos={this.state.photos}/>
-        <div className="loading" style={isLoading}>Loading!</div>
-        <button className="more" onClick={this.loadMore.bind(this)}>
-          More for you!
-        </button>
+        <Album
+          id='album'
+          photos={this.state.photos}
+          ref={this.album}
+          getPhotos={this.getPhotos}
+          page={this.state.page}
+          loading={this.state.loading}
+        />
       </div>
     );
   }
