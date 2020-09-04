@@ -18,7 +18,7 @@
 .navbar {
   position: fixed;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   width: calc(100vw - 10em);
   height: 5em;
   background-color: black;
@@ -31,11 +31,13 @@
     box-shadow: 0 .5em .25em 0px rgba(0,0,0,0.5);
   }
   .nav {
+    display: flex;
     padding: 1em;
     .nav-filter {
       font-weight: bold;
       cursor: pointer;
       display: flex;
+      flex-basis: 20em;
       justify-content: space-between;
       align-items: center;
       width: 8em;
@@ -51,6 +53,7 @@
         width: 14em;
         height: 34px;
         select {
+          outline: none;
           cursor: pointer;
           border-radius: 5em;
           padding-left: .5em;
@@ -223,6 +226,34 @@ input:checked + .slider:before {
         overflow: hidden;
         text-overflow: ellipsis;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    height: 5em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    .nav {
+      padding: 0 .5em;
+      .nav-filter {
+        font-size: .85em;
+      }
+    }
+  }
+
+  .photo-modal {
+    .image-container {
+      height: 100% !important;
+      max-height: 100% !important;
+      max-width: 100% !important;
+      margin-bottom: 0 !important;
+    }
+    .photo-details {
+      display: none !important;
     }
   }
 }
