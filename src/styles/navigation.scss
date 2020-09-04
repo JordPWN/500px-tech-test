@@ -1,0 +1,66 @@
+@import './slider.scss';
+
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-flow: row wrap;
+  width: calc(100vw - 10em);
+  height: 5em;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5em;
+  z-index: 1;
+  color: white;
+  &.is-scrolling {
+    box-shadow: 0 .5em .25em 0px rgba(0,0,0,0.5);
+  }
+  .nav {
+    display: flex;
+    padding: 1em;
+    .nav-filter {
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      flex-basis: 20em;
+      justify-content: space-between;
+      align-items: center;
+      width: 8em;
+      border: 4px solid white;
+      padding: .25em;
+      padding-left: 1em;
+      border-radius: 5em;
+      &.nav-filter-nsfw.on {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+      &.nav-sort-by-feature {
+        width: 14em;
+        height: 34px;
+        select {
+          outline: none;
+          cursor: pointer;
+          border-radius: 5em;
+          padding-left: .5em;
+          height: 34px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    height: 5em;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    .nav {
+      padding: 0 .5em;
+      .nav-filter {
+        font-size: .85em;
+      }
+    }
+  }
+}

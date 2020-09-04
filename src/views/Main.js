@@ -1,23 +1,22 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import axios from 'axios'
 
 import Album from '../components/album/Album.js'
 import Navigation from '../components/navigation/Navigation.js'
 
-import '../styles/Main.scss';
+import '../styles/main.scss'
 
 export default class Main extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      results: {},
+      feature: 'popular',
+      loading: false,
       page: 1,
       photos: [],
-      loading: false,
-      isScrolling: false,
+      results: {},
       showNsfw: true,
-      feature: 'popular',
-      sortBy: 'created_at',
+      sortBy: 'created_at'
     }
   }
 
@@ -86,16 +85,14 @@ export default class Main extends React.Component {
         <Navigation
           updateFeature={this.updateFeature}
           toggleNsfw={this.toggleNsfw}
-          showNsfw={this.state.showNsfw}
-        />
+          showNsfw={this.state.showNsfw} />
         <Album
           id='album'
           photos={this.state.photos}
           getPhotos={this.getPhotos}
           page={this.state.page}
-          loading={this.state.loading}
-        />
+          loading={this.state.loading} />
       </div>
-    );
+    )
   }
 }

@@ -1,25 +1,15 @@
 import React from 'react'
 import JustifiedLayout from 'react-justified-layout'
 
-import Photo from '../common/Photo.js'
+import Photo from '../photo/Photo.js'
 
-// import '../styles/Album.scss'
+import '../../styles/album.scss'
 
 class Album extends React.Component {
   constructor(props) {
     super(props)
 
     this.getPhotos = this.props.getPhotos
-  }
-
-  photosLoaded(photos) {
-    if (this.props.photos) {
-      return <JustifiedLayout className="album-container">
-          { photos }
-        </JustifiedLayout>
-    } else {
-      return "No photos!"
-    }
   }
 
   loadMore = (e) => {

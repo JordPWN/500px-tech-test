@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Modal from '../modal/Modal.js'
 
-// import '../styles/photo.scss'
+import '../../styles/photo.scss'
 
 class Photo extends React.Component {
   constructor(props) {

@@ -1,0 +1,11 @@
+.photo {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7);
+    transition: all ease-in-out .25s;
+  }
+}

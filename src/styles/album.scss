@@ -1,0 +1,10 @@
+.album {
+  height: calc(100vh - 5em);
+  width: 100vw;
+  margin-top: 5em;
+  overflow-y: scroll;
+  .album-container {
+    height: 100%;
+    width: calc(100% - 10em);
+  }
+}

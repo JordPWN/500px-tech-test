@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// import '../styles/navigation.scss'
+import '../../styles/navigation.scss'
 
 class Navigation extends React.Component {
 
