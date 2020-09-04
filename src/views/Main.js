@@ -30,6 +30,9 @@ export default class Main extends React.Component {
   featureFilter() {
     return this.state.feature ? `&feature=${this.state.feature}` : ''
   }
+  photoSet(photos) {
+    return [...photos, ...this.state.photos].filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+  }
 
   getPhotos = (page) => {
     this.setState({ loading: true })
@@ -41,10 +44,11 @@ export default class Main extends React.Component {
       .then(
         res => {
           const results = res.data
+          const photos = this.photoSet(results.photos)
           this.setState({
             results: results,
             page: results.current_page,
-            photos: [...this.state.photos, ...results.photos]
+            photos: photos
           })
           this.setState({ loading: false })
         },
