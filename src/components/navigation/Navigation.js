@@ -13,7 +13,13 @@ export default class Navigation extends React.Component {
         </div>
         <div className="nav nav-right">
           <div className="nav-filter nav-filter-nsfw">
-            NSFW
+            <label htmlFor="nsfw">
+              NSFW
+            </label>
+            <label className="switch">
+              <input type="checkbox" id="nsfw"/>
+              <span className="slider round"></span>
+            </label>
           </div>
         </div>
       </div> 

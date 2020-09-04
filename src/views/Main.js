@@ -18,8 +18,7 @@ export default class Main extends React.Component {
       isScrolling: false,
       showNsfw: true,
       feature: 'fresh_today',
-      threshold: 100,
-      throttle: 64,
+      sortBy: 'created_at'
     }
   }
 
@@ -31,7 +30,8 @@ export default class Main extends React.Component {
     return this.state.feature ? `&feature=${this.state.feature}` : ''
   }
   photoSet(photos) {
-    return [...photos, ...this.state.photos].filter((v,i,a)=>a.findIndex(t=>(t.id === v.id))===i)
+    return [...this.state.photos, ...photos].filter((v,i,a) => 
+    a.findIndex(t => (t.id === v.id)) === i)
   }
 
   getPhotos = (page) => {
