@@ -21,11 +21,11 @@ export default class Main extends React.Component {
     }
   }
 
-  nudeFilter() {
+  nudeFilter = () => {
     return this.state.showNsfw ? '&exclude=nude' : ''
   }
 
-  featureFilter() {
+  featureFilter = () =>  {
     return this.state.feature ? `&feature=${this.state.feature}` : ''
   }
   photoSet(photos) {
