@@ -8,6 +8,7 @@ import Modal from '../modal/Modal.js'
 class Photo extends React.Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       showModal: false
     }
@@ -20,11 +21,18 @@ class Photo extends React.Component {
   toggleModal = () => {
     this.setState({showModal: !this.state.showModal})
   }
+  
+  closeModal = () => {
+    console.log('closing!')
+    this.setState({showModal: false})
+  }
 
   render() {
     const { photo } = this.props
     const orientation = (photo.height >= photo.width) ? "portrait" : "landscape"
-    const modal = this.state.showModal && this.props.modalsEnabled ? <Modal toggleModal={this.toggleModal} orientation={orientation} photo={photo} />: ''
+    const modal = this.state.showModal && this.props.modalsEnabled ? 
+      <Modal toggleModal={this.toggleModal} orientation={orientation}
+        photo={photo} closeModal={this.closeModal} /> : ''
 
     return (
       <div className="photo" style={this.props.style}>
