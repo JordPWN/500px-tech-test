@@ -1,8 +1,11 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-// import '../styles/Photo.scss';
+import Modal from '../modal/Modal.js'
 
-export default class Photo extends React.Component {
+// import '../styles/photo.scss'
+
+class Photo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,31 +13,32 @@ export default class Photo extends React.Component {
     }
   }
 
+  static defaultProps = {
+    modalsEnabled: true
+  }
+
   toggleModal = () => {
-    console.log('modal!')
     this.setState({showModal: !this.state.showModal})
   }
 
   render() {
-    const orientation = (this.props.photo.height >= this.props.photo.width) ? "portrait" : "landscape"
-    const modalElement =  
-      <div className="photo-modal" onClick={this.toggleModal}>
-        <div className="photo-modal-container">
-          <div className={`image-container ${orientation}`}>
-            <img src={this.props.photo.image_url} alt={this.props.photo.name} className={orientation}/>
-          </div>
-          <div class="photo-details">
-            <h1>{this.props.photo.name}</h1>
-            <p>{this.props.photo.description}</p>
-          </div>
-        </div>
-      </div>
-    const modal = this.state.showModal ? modalElement : ''
+    const { photo } = this.props
+    const orientation = (photo.height >= photo.width) ? "portrait" : "landscape"
+    const modal = this.state.showModal && this.props.modalsEnabled ? <Modal toggleModal={this.toggleModal} orientation={orientation} photo={photo} />: ''
+
     return (
       <div className="photo" style={this.props.style}>
-        <img src={this.props.photo.image_url} alt={this.props.photo.name} onClick={this.toggleModal}/>
+        <img src={photo.image_url} alt={photo.name} onClick={this.toggleModal}/>
         { modal }
       </div>
-    );
+    )
   }
 }
+
+Photo.propTypes = {
+  photo: PropTypes.object.isRequired,
+  style: PropTypes.object,
+  modalsEnabled: PropTypes.bool.isRequired
+}
+
+export default Photo

@@ -3,9 +3,9 @@ import JustifiedLayout from 'react-justified-layout'
 
 import Photo from '../common/Photo.js'
 
-// import '../styles/Album.scss';
+// import '../styles/Album.scss'
 
-export default class Album extends React.Component {
+class Album extends React.Component {
   constructor(props) {
     super(props)
 
@@ -23,7 +23,7 @@ export default class Album extends React.Component {
   }
 
   loadMore = (e) => {
-    const bottom = e.target.scrollHeight - Math.ceil(e.target.scrollTop) <= e.target.clientHeight + 100;
+    const bottom = e.target.scrollHeight - Math.ceil(e.target.scrollTop) <= e.target.clientHeight + 100
     if (bottom && !this.props.loading) { this.getPhotos(this.props.page + 1) }
   }
 
@@ -45,6 +45,8 @@ export default class Album extends React.Component {
           { photos }
         </JustifiedLayout>
       </div>
-    );
+    )
   }
 }
+
+export default Album

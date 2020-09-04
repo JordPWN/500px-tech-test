@@ -28,12 +28,31 @@ export default class Main extends React.Component {
   featureFilter = () =>  {
     return this.state.feature ? `&feature=${this.state.feature}` : ''
   }
+
+  updateFeature = (event) => {
+    if (event.target.value !== this.state.feature) {
+      this.setState({
+        feature: event.target.value,
+        photos: []
+      })
+      this.getPhotos()
+    }
+  }
+
+  toggleNsfw = () => {
+    this.setState({ 
+      showNsfw: !this.state.showNsfw,
+      photos: []
+     })
+     this.getPhotos()
+  }
+
   photoSet(photos) {
     return [...this.state.photos, ...photos].filter((v,i,a) => 
     a.findIndex(t => (t.id === v.id)) === i)
   }
 
-  getPhotos = (page) => {
+  getPhotos = (page = 1) => {
     this.setState({ loading: true })
     axios.get(`https://api.500px.com/v1/photos?
     consumer_key=${process.env.REACT_APP_PX_API_KEY}
@@ -64,7 +83,11 @@ export default class Main extends React.Component {
   render() {
     return (
       <div className="main" id='main'>
-        <Navigation />
+        <Navigation
+          updateFeature={this.updateFeature}
+          toggleNsfw={this.toggleNsfw}
+          showNsfw={this.state.showNsfw}
+        />
         <Album
           id='album'
           photos={this.state.photos}
