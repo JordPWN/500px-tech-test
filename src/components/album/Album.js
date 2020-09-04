@@ -11,6 +11,7 @@ export default class Album extends React.Component {
 
     this.getPhotos = this.props.getPhotos
   }
+
   photosLoaded(photos) {
     if (this.props.photos) {
       return <JustifiedLayout className="album-container">
@@ -36,7 +37,11 @@ export default class Album extends React.Component {
     return (
       <div className="album" onScroll={this.loadMore}>
         <div className={`loading-overlay ${loading}`}>Loading...</div>
-        <JustifiedLayout className="album-container" containerPadding={80} containerWidth={document.documentElement.clientWidth}>
+        <JustifiedLayout className="album-container"
+          containerPadding={80}
+          containerWidth={document.documentElement.clientWidth}
+          showWidows={false}
+        >
           { photos }
         </JustifiedLayout>
       </div>

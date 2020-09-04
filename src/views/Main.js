@@ -9,7 +9,6 @@ import '../styles/Main.scss';
 export default class Main extends React.Component {
   constructor(props) {
     super(props)
-    this.album = React.createRef()
     this.state = {
       results: {},
       page: 1,
@@ -17,8 +16,8 @@ export default class Main extends React.Component {
       loading: false,
       isScrolling: false,
       showNsfw: true,
-      feature: 'fresh_today',
-      sortBy: 'created_at'
+      feature: 'popular',
+      sortBy: 'created_at',
     }
   }
 
@@ -69,7 +68,6 @@ export default class Main extends React.Component {
         <Album
           id='album'
           photos={this.state.photos}
-          ref={this.album}
           getPhotos={this.getPhotos}
           page={this.state.page}
           loading={this.state.loading}
