@@ -21,7 +21,7 @@ export default class Main extends React.Component {
   }
 
   nudeFilter = () => {
-    return this.state.showNsfw ? '&exclude=nude' : ''
+    return this.state.showNsfw ? '&exclude=Nude' : ''
   }
 
   featureFilter = () =>  {
@@ -33,8 +33,7 @@ export default class Main extends React.Component {
       this.setState({
         feature: event.target.value,
         photos: []
-      })
-      this.getPhotos()
+      }, this.getPhotos())
     }
   }
 
@@ -42,8 +41,7 @@ export default class Main extends React.Component {
     this.setState({ 
       showNsfw: !this.state.showNsfw,
       photos: []
-     })
-     this.getPhotos()
+     }, this.getPhotos())
   }
 
   photoSet(photos) {

@@ -53,6 +53,7 @@
       align-items: center;
       max-height: 12em;
       width: calc(100% - 12em);
+      overflow-y: scroll;
       h1 {
         margin: 0;
       }
